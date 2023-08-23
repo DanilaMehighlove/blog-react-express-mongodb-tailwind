@@ -1,5 +1,5 @@
 import "../App.scss";
-import { Header } from "./main";
+import { Header, Footer, Main } from "./base";
 
 function App() {
   return (
@@ -11,12 +11,12 @@ function App() {
       </header>
       <main className="flex justify-center flex-grow">
         <div className="flex max-w-6xl pl-16 pr-16 w-full">
-          MAIN
+          <Main />
         </div>
       </main>
       <footer className="flex justify-center bg-green-800 pt-4 pb-4">
         <div className="flex max-w-6xl pl-16 pr-16 w-full">
-          FOOTER
+          <Footer />
         </div>
       </footer>
     </div>
