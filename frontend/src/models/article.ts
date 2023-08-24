@@ -1,5 +1,5 @@
 export interface IArticle {
-  ID: number;
+  _id: number;
   title: string;
   text: string;
 }
@@ -15,7 +15,7 @@ export class Article {
   get text() { return this._text; }
 
   constructor(obj: IArticle) {
-    this._ID = obj.ID;
+    this._ID = obj._id;
     this._title = obj.title;
     this._text = obj.text;
   }

@@ -15,7 +15,7 @@ export function Header() {
       </a>
       <nav className="flex flex-row flex-grow ">
         <ul className="flex flex-row flex-grow gap-x-6 items-end justify-end text-xl">
-          { navItems.map(item => <li><a href={item.href}>{item.name}</a></li> )}
+          { navItems.map(item => <li key={item.name}><a href={item.href}>{item.name}</a></li> )}
         </ul>
       </nav>
     </div>
