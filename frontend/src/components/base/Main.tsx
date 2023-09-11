@@ -1,19 +1,14 @@
-import Article from "../blog/Article";
-import { Article as ArticleClass } from "../../models/article";
-import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import { ArticleList } from '../blog/ArticleList';
+import { Login, Signin } from '../authorization';
 
 export function Main() {
-  const [articles, setArticles] = useState<ArticleClass[]>([]);
-
-  useEffect(() => {
-    fetch('http://localhost:3030/articles')
-    .then(response => response.json())
-    .then(data => setArticles(data.map((a: any) => new ArticleClass(a))));
-  }, []);
 
   return(
-    <div className="flex flex-col pt-6 pb-6 gap-y-6">
-      { articles.map(a => <Article key={a.ID} article={a} />) }
-    </div>
+    <Routes>
+      <Route path="/" element={<ArticleList />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signin" element={<Signin />} />
+    </Routes>
   );
 }
