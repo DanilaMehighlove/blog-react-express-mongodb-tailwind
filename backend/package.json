@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon index.ts",
     "tsc:node": "tsc index.ts && node index.js"
   },
   "author": "",
@@ -20,6 +21,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "mongodb": "^5.8.1"
+    "mongodb": "^5.8.1",
+    "mongoose": "^7.5.1"
   }
 }
