@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { connect } from 'mongoose';
 
-import Routes from './routes/routes';
+import Routes from './routes/_routes';
 
 const mongodbURL = 'mongodb://localhost:27017/niceblog';
 
