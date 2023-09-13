@@ -1,4 +1,4 @@
-import { Model, ObjectId } from "mongoose";
+import { Model } from "mongoose";
 
 export class DefaultModel<T extends {}> {
   private model: Model<T>;
@@ -20,7 +20,6 @@ export class DefaultModel<T extends {}> {
   }
 
   update(id: string, value: T) {
-    console.log({id ,value})
     return this.model.updateOne({_id: id}, value)
   }
 

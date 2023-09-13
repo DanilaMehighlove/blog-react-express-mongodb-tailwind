@@ -4,6 +4,7 @@ import { DefaultModel } from "./DefaultModel";
 const userSchema = new Schema({
   login: {
     required: true,
+    unique: true,
     type: String
   },
   password: {
@@ -12,11 +13,8 @@ const userSchema = new Schema({
   }
 });
 
-type SchemeType = { login: string, password: string };
-const userModel: Model<SchemeType> = model('User', userSchema);
-
-export class User extends DefaultModel<SchemeType> {
+export class UserModel extends DefaultModel<{ login: string, password: string }> {
   constructor() {
-    super(userModel);
+    super(model('User', userSchema));
   }
 }
