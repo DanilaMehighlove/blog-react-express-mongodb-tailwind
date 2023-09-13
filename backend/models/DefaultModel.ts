@@ -1,7 +1,7 @@
 import { Model } from "mongoose";
 
 export class DefaultModel<T extends {}> {
-  private model: Model<T>;
+  protected model: Model<T>;
 
   constructor(model: Model<T>) {
     this.model = model;

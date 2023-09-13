@@ -8,7 +8,7 @@ export class DefaultController {
     this.model = model;
   }
 
-  async get (req: Request, res: Response) {
+  get = async (req: Request, res: Response) => {
     try {
       const data = await this.model.find();
       res.send(data);
@@ -18,7 +18,7 @@ export class DefaultController {
     }
   }
 
-  async getOne (req: Request, res: Response) {
+  getOne = async (req: Request, res: Response) => {
     try {
       const data = await this.model.findById(req.params.id);
       res.send(data);
@@ -28,7 +28,7 @@ export class DefaultController {
     }
   }
 
-  async post (req: Request, res: Response) {
+  post = async (req: Request, res: Response) => {
     try {
       const data = await this.model.create(req.body);
       res.send(data);
@@ -38,7 +38,7 @@ export class DefaultController {
     }
   }
 
-  async put (req: Request, res: Response) {
+  put = async (req: Request, res: Response) => {
     try {
       const data = await this.model.update(req.params.id, req.body);
       res.send(data);
@@ -48,7 +48,7 @@ export class DefaultController {
     }
   }
 
-  async delete (req: Request, res: Response) {
+  delete = async (req: Request, res: Response) => {
     try {
       const data = await this.model.delete(req.params.id);
       res.send(data);

@@ -1,20 +1,20 @@
 import { Schema, model } from "mongoose";
 import { DefaultModel } from "./DefaultModel";
 
-const userSchema = new Schema({
-  login: {
+const articleSchema = new Schema({
+  title: {
     required: true,
     unique: true,
     type: String
   },
-  password: {
+  text: {
     required: true,
     type: String
   }
 });
 
-export class UserModel extends DefaultModel<{ login: string, password: string }> {
+export class ArticleModel extends DefaultModel<{ title: string, text: string }> {
   constructor() {
-    super(model('User', userSchema));
+    super(model('Article', articleSchema));
   }
 }
