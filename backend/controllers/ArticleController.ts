@@ -1,5 +1,5 @@
 import { ArticleModel } from '../models/ArticleModel';
-import { DefaultController } from "./DefaultController";
+import { DefaultController } from "./_DefaultController";
 
 export class ArticleController extends DefaultController {
   constructor() {

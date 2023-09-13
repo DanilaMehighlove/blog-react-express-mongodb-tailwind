@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { DefaultController } from "../controllers/DefaultController";
+import { DefaultController } from "../controllers/_DefaultController";
 
 export class DefaultRoutes {
   protected router = Router();

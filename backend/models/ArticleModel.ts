@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { DefaultModel } from "./DefaultModel";
+import { DefaultModel } from "./_DefaultModel";
 
 const articleSchema = new Schema({
   title: {

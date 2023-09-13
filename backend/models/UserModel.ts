@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { DefaultModel } from "./DefaultModel";
+import { DefaultModel } from "./_DefaultModel";
 
 const userSchema = new Schema({
   login: {

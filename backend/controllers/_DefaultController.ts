@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { DefaultModel } from "../models/DefaultModel";
+import { DefaultModel } from "../models/_DefaultModel";
 
 export class DefaultController {
   protected model: DefaultModel<any>;
