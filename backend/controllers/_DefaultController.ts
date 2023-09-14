@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { DefaultModel } from "../models/_DefaultModel";
 
-export class DefaultController {
-  protected model: DefaultModel<any>;
+export class DefaultController<T extends DefaultModel<any>> {
+  protected model: T;
 
-  constructor(model: DefaultModel<any>) {
+  constructor(model: T) {
     this.model = model;
   }
 

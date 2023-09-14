@@ -1,11 +1,11 @@
 import { Router } from "express";
 import { DefaultController } from "../controllers/_DefaultController";
 
-export class DefaultRoutes {
+export class DefaultRoutes<T extends DefaultController<any>> {
   protected router = Router();
-  protected controller: DefaultController;
+  protected controller: T;
 
-  constructor(controller: DefaultController) {
+  constructor(controller: T) {
     this.controller = controller;
     this.router.get('/', this.controller.get);
 

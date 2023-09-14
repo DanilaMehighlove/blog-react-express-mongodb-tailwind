@@ -1,16 +1,20 @@
 import { MouseEvent, useState, ChangeEvent } from 'react';
-import { Button, Input } from "../form-elements";
+import { Button, Input, Error } from "../form-elements";
+import { handleMongoErrors } from '../../utils/handleErrors';
 
 export function Signin() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [signinErrors, setSigninErrors] = useState<string[]>([]);
 
   const handleLoginChange = (event: ChangeEvent<HTMLInputElement>) => {
     setLogin(event.target.value);
+    if (signinErrors.length) setSigninErrors([]);
   }
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
+    if (signinErrors.length) setSigninErrors([]);
   }
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -24,7 +28,11 @@ export function Signin() {
       body: JSON.stringify({login, password})
     })
     .then(response => response.json())
-    .then(data => console.log({data}));
+    .then(data => {
+      console.log({data});
+
+      setSigninErrors(handleMongoErrors(data));
+    });
   }
 
   return(
@@ -32,6 +40,7 @@ export function Signin() {
       <Input value={login} onChange={handleLoginChange} />
       <Input value={password} onChange={handlePasswordChange} />
       <Button text='Sign in' onClick={handleClick} />
+      <Error errors={signinErrors} />
     </form>
   );
 }

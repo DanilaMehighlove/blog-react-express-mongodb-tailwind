@@ -13,8 +13,15 @@ const userSchema = new Schema({
   }
 });
 
-export class UserModel extends DefaultModel<{ login: string, password: string }> {
+
+interface props { login: string; password: string; };
+export class UserModel extends DefaultModel<props> {
   constructor() {
     super(model('User', userSchema));
+  }
+
+  isExist(props: props) {
+    if (!props.login || !props.password) throw new Error();
+    return this.model.findOne(props);
   }
 }
