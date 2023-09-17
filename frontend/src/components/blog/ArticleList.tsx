@@ -1,12 +1,13 @@
 import Article from "../blog/Article";
 import { Article as ArticleClass } from "../../models/article";
 import { useEffect, useState } from "react";
+import { getArticles } from "../../utils/requests";
 
 export function ArticleList() {
   const [articles, setArticles] = useState<ArticleClass[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:3030/article')
+    getArticles()
     .then(response => response.json())
     .then(data => setArticles(data.map((a: any) => new ArticleClass(a))));
   }, []);

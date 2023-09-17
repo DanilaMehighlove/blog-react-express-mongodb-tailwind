@@ -15,5 +15,9 @@ export function handleMongoErrors(response: any): string[] {
     errorMessage.push('The login is already taken.');
   }
 
+  if (response?.notFound) {
+    errorMessage.push('The user was not found.');
+  }
+
   return errorMessage;
 }

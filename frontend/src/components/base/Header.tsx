@@ -2,6 +2,7 @@ import logo from '../../logo.svg';
 import { Link } from 'react-router-dom';
 
 export function Header() {
+  console.log(localStorage.getItem('userID'));
   return(
     <div className="flex gap-x-4 w-full justify-between text-white">
       <Link className="flex items-end gap-x-2" to="/">
