@@ -1,7 +1,16 @@
 import "../App.scss";
 import { Header, Footer, Main } from "./base";
+import { useEffect } from "react";
+import { initUserID } from "../store/features/userSlice";
+import { useAppDispatch } from "../store/hooks";
 
 function App() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(initUserID());
+  }, []);
+
   return (
     <div className="flex flex-col h-full">
       <header className="flex justify-center bg-green-800 pt-4 pb-4">

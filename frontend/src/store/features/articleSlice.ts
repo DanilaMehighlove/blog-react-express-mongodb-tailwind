@@ -1,12 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface IArticle {
-  id: string;
-  text: string;
-}
+import { createSlice } from '@reduxjs/toolkit';
+import { Article } from '../../models/article';
 
 interface IInitialState {
-  list: IArticle[];
+  list: Article[];
 }
 
 const initialState: IInitialState = {

@@ -3,12 +3,15 @@ import { Button, Input, Error } from "../form-elements";
 import { handleMongoErrors } from '../../utils/handleErrors';
 import { createUser } from '../../utils/requests';
 import { useNavigate } from 'react-router-dom';
+import { setUserID } from '../../store/features/userSlice';
+import { useAppDispatch } from '../../store/hooks';
 
 export function Signin() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [signinErrors, setSigninErrors] = useState<string[]>([]);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleLoginChange = (event: ChangeEvent<HTMLInputElement>) => {
     setLogin(event.target.value);
@@ -30,7 +33,7 @@ export function Signin() {
       errors = [...errors, ...handleMongoErrors(data)];
 
       if (!errors.length) {
-        localStorage.setItem('userID', data['_id']);
+        dispatch(setUserID(data['_id']));
         return navigate('/');
       }
 

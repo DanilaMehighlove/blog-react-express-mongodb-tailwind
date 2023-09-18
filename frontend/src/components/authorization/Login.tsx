@@ -3,12 +3,15 @@ import { Input, Button, Error } from '../form-elements';
 import { handleMongoErrors } from '../../utils/handleErrors';
 import { isUserExist } from '../../utils/requests';
 import { useNavigate } from 'react-router-dom';
+import { setUserID } from '../../store/features/userSlice';
+import { useAppDispatch } from '../../store/hooks';
 
 export function Login() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [loginErrors, setLoginErrors] = useState<string[]>([]);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleLoginChange = (event: ChangeEvent<HTMLInputElement>) => {
     setLogin(event.target.value);
@@ -31,7 +34,7 @@ export function Login() {
         errors = [...errors, ...handleMongoErrors(data)];
 
         if (!errors.length) {
-          localStorage.setItem('userID', data['_id']);
+          dispatch(setUserID(data['_id']));
           return navigate('/');
         }
 
