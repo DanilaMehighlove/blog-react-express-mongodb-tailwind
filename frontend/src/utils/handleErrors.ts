@@ -11,6 +11,10 @@ export function handleMongoErrors(response: any): string[] {
     });
   }
 
+  if (response?.code === 11000 && response?.keyPattern?.title) {
+    errorMessage.push('The title must be unique.');
+  }
+
   if (response?.code === 11000 && response?.keyPattern?.login) {
     errorMessage.push('The login is already taken.');
   }

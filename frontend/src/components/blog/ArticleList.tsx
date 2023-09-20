@@ -1,15 +1,14 @@
 import Article from "../blog/Article";
-import { Article as ArticleClass } from "../../models/article";
-import { useEffect, useState } from "react";
-import { getArticles } from "../../utils/requests";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { getArticles } from '../../store/features/articleSlice';
 
 export function ArticleList() {
-  const [articles, setArticles] = useState<ArticleClass[]>([]);
+  const articles = useAppSelector(state => state.article.list);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    getArticles()
-    .then(response => response.json())
-    .then(data => setArticles(data.map((a: any) => new ArticleClass(a))));
+    dispatch(getArticles());
   }, []);
 
   return(
